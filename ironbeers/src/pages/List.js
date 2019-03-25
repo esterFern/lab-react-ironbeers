@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import beersService from '../services/beersService';
 import Beer from '../components/Beer';
 import Navbar from '../components/Navbar';
+import Search from '../components/Search';
 
 export default class List extends Component {
 
@@ -16,11 +17,25 @@ export default class List extends Component {
     beersService.getAll()
       .then(data => {
         this.setState({
-          beers:data
+          beers: data
         })
       })
       .catch(error => console.log(error));
 
+  }
+
+  handleSearch = (search) => {
+    if (search === '') {
+      this.getBeersList();
+    } else {
+      beersService.searchBeers(search)
+        .then(data => {
+          this.setState({
+            beers: data
+          })
+        })
+        .catch(error => console.log(error));
+    }
   }
 
   renderList() {
@@ -38,7 +53,8 @@ export default class List extends Component {
   render() {
     return (
       <div>
-        <Navbar/>
+        <Navbar />
+        <Search search={this.handleSearch} />
         List
         {this.renderList()}
       </div>

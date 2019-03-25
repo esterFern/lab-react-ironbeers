@@ -13,8 +13,17 @@ class BeersService{
   }
 
   getBeer(id) {
-    
     return this.api.get(`/single/${id}`)
+      .then(({data}) => data)
+  }
+
+  getRandomBeer() {
+    return this.api.get(`/random`)
+      .then(({data}) => data)
+  }
+
+  searchBeers(query) {
+    return this.api.get(`/search?q=${query}`)
       .then(({data}) => data)
   }
 }

@@ -55,7 +55,6 @@ export default class List extends Component {
       <div>
         <Navbar />
         <Search search={this.handleSearch} />
-        List
         {this.renderList()}
       </div>
     )

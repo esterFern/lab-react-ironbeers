@@ -26,16 +26,25 @@ export default class BeerDetails extends Component {
   render() {
     const { beer } = this.state;
     return (
+
       <div>
         <Navbar />
-        <img src={beer.image_url} alt={beer.name} height="150px" />
-        <h1>{beer.name}</h1>
-        <h2>{beer.attenuation_level}</h2>
-        <h3>{beer.tagline}</h3>
-        <h4>{beer.first_brewed}</h4>
-        <p>{beer.description}</p>
-        <p>{beer.contributed_by}</p>
+        <div className="details">
+
+          <img src={beer.image_url} alt={beer.name} height="250px" />
+          <div className="line">
+            <h1>{beer.name}</h1>
+            <h2>{beer.attenuation_level}</h2>
+          </div>
+          <div className="line">
+            <h3>{beer.tagline}</h3>
+            <p>{beer.first_brewed}</p>
+          </div>
+          <p>{beer.description}</p>
+          <p className="beer-contribution">{beer.contributed_by}</p>
+        </div>
       </div>
+
     )
   }
 }
